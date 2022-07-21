@@ -1,0 +1,75 @@
+.item {
+
+    position: relative;
+
+    .title {
+        width: 210px;
+        height: 22px;
+        // padding-top: 20px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 17px;
+        line-height: 22px;
+        /* identical to box height, or 129% */
+
+        letter-spacing: -0.408px;
+
+        color: #424242;
+    }
+
+    .heart {
+        cursor: pointer;
+        position: absolute;
+        border: none;
+        outline: none;
+        font: inherit;
+        
+        right: 0px;
+        font-size: 19px;
+
+        background-color: #fff;
+        // top: 5px;
+        // margin-left: 368px;
+    }
+
+    .stars {
+        font-size: 16px;
+        position: absolute;
+        color: #E5E5E5;
+
+        span {
+            padding: 10px 5px 5px 0;
+        }
+    }
+
+    .price {
+        // position: absolute;
+
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 22px;
+        /* or 129% */
+
+        text-align: right;
+        letter-spacing: -0.408px;
+
+        // top: 100px;
+        span {
+            margin-right: 16px;
+            font-weight: 300;
+            font-size: 11px;
+            line-height: 22px;
+        }
+    }
+
+    .partition {
+        margin: 10px 0;
+        width: 584px;
+        height: 1px;
+
+        background: rgba(135, 135, 135, 0.2);
+        border-radius: 8px;
+        transform: matrix(1, 0, 0, -1, 0, 0);
+    }
+}

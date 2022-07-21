@@ -1,0 +1,74 @@
+.mainBlock {
+
+    grid-area: m;
+    width: 664px;
+    height: 902px;
+    padding: 48px 32px;
+    border-radius: 16px;
+
+    background: #FFFFFF;
+
+    .header {
+
+        h1 {
+            // margin: -20;
+        }
+
+        display: flex;
+        justify-content: space-between;
+
+        .date {
+            margin: 10px;
+
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 28px;
+            // display: flex;
+            // align-items: center;
+            // text-align: right;
+
+            color: #41522E;
+        }
+    }
+
+    .foto {
+        display: flex;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        width: 599px;
+        margin-top: 12px;
+
+        // padding: 10px 0;
+        img {
+            margin-right: 12px;
+            width: 164px;
+            height: 149px;
+            border-radius: 16px;
+        }
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .numberFavo {
+        margin: 28px 0;
+    }
+
+    .hotelItem {
+        overflow: auto;
+        height: 530px;
+        // width: 650px;
+    }
+    .arrow {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        top: -30px;
+        font-size: 50px;
+        color: #345d33b4;
+        opacity: 0.4;
+    }
+}
