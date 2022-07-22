@@ -1,31 +1,37 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import s from './Main.module.scss'
 import { Hotel } from './Hotel/Hotel'
-import { useAppDispatch, useAppSelector } from '../../../utils/hook'
+import { useAppSelector, useIsInViewport } from '../../../utils/hook'
 import { requestHotels } from './hotels-reducer'
-import { removeHotel } from '../Favorites/favorites-reducer'
+import { addedFavoritesHotel, removeHotel } from '../Favorites/favorites-reducer'
 import { useDispatch } from 'react-redux'
-
+import { HotelType } from '../../../api/api'
+import { todaysLat } from '../RequestParameters/RequestParameters'
 
 
 export const Main = () => {
+    const ref1 = useRef(null)
+    // const isInViewport1 = useIsInViewport(ref1)
 
     const favorites = useAppSelector(state => state.favoriteHotel.length)
-    const hotels = useAppSelector(state => state.hotel.hotels)
+
+    const hotelsReducer = useAppSelector(state => state.hotel)
+    const { hotels, location } = hotelsReducer
     // const dispatch = useAppDispatch()
     const dispatch = useDispatch<any>()
-    // useAppSelector(state => state.
 
-    // https://engine.hotellook.com/api/v2/cache.json?location=Moscow&currency=rub&checkIn=2022-09-22&checkOut=2022-10-12
-    let location = 'Moscow'
-    let checkIn = '2022-09-22'
-    let checkOut = '2022-10-12'
+
+    let checkIn = todaysLat
+    let checkOut = todaysLat
+
     useEffect(() => {
         dispatch(requestHotels(location, checkIn, checkOut))
     }, [])
 
-    let addToFavoriteOnCLick = () => {
+    console.log(hotels);
 
+    let addToFavoriteOnCLick = (hotel: HotelType) => {
+        dispatch(addedFavoritesHotel(hotel))
     }
 
     const removeHotelOnClick = useCallback((id: number) => {
@@ -52,11 +58,17 @@ export const Main = () => {
                 <span>Добавлено в избранное {favorites} отеля</span>
             </div>
             <div className={s.hotelItem}>
-                {hotels.map(h => <Hotel key={h.hotelId}
-                    hotels={h}
-                    addToFavorite={addToFavoriteOnCLick}
-                    removeHotel={removeHotelOnClick}
-                />)}
+                {
+                    hotels.length < 1 ? <h1>По данному запросу отелей не найдено!</h1>
+                        : hotels.map(h =>
+                            <Hotel key={h.hotelId}
+                                refValue={ref1}
+                                hotel={h}
+                                addToFavorite={addToFavoriteOnCLick}
+                                removeHotel={removeHotelOnClick}
+                            />
+                        )
+                }
             </div>
             <span className={s.arrow}>
                 {

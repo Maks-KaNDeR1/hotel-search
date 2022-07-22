@@ -3,8 +3,8 @@ import { applyMiddleware, combineReducers, legacy_createStore as createStore } f
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import appReducer, { AppActionsType } from './app-reducer';
 import { AuthActionsType } from '../components/Auth/auth-reducer';
-import { favoritesReducer } from '../components/SearchHotels/Favorites/favorites-reducer';
-import { hotelsReducer } from '../components/SearchHotels/Main/hotels-reducer';
+import { FavoritesActionsType, favoritesReducer } from '../components/SearchHotels/Favorites/favorites-reducer';
+import { HotelsActionsType, hotelsReducer } from '../components/SearchHotels/Main/hotels-reducer';
 
 export const rootReducer = combineReducers({
     auth: authReducer,
@@ -16,7 +16,7 @@ export const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(thunk))
 
 export type AppRootStateType = ReturnType<typeof store.getState>
-type AppRootActionsType = AppActionsType | AuthActionsType
+type AppRootActionsType = AppActionsType | AuthActionsType | HotelsActionsType | FavoritesActionsType
 
 // export type AppDispatch = typeof store.dispatch
 export type AppDispatch = ThunkDispatch<AppRootStateType, unknown, AppRootActionsType>

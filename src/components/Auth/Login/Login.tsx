@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { Formik } from "formik";
 import * as yup from 'yup'
 import s from './Login.module.scss';
-import { Navigate, NavLink } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../utils/hook';
 import { login } from '../auth-reducer';
-import Headlines from '../../../common/Headlines/Headlines';
 import MainButton from '../../../common/MainButton/MainButton';
 
 
@@ -34,15 +33,9 @@ export const Login = () => {
     }
 
     const submitHandler = (values: SubmitHandlerType) => {
-
-        // let data = { 
-        //     values.email, 
-        //     values.password, 
-        //     isAuth }
         const isAuth = true
         dispatch(login(values.email, values.password, isAuth))
         sessionStorage.setItem('auth', JSON.stringify({ isAuth: isAuth }))
-        // dispatch(setAuthUserData(data))
     }
 
     if (isAuth) {
@@ -99,7 +92,6 @@ export const Login = () => {
                         {touched.password && errors.password && <p className={s.error}>{errors.password}</p>}
 
                         <div className={s.button}>
-
                             <MainButton
                                 title='Войти'
                                 style={{ color: '#fff', fontSize: '18px' }}

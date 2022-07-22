@@ -1,28 +1,21 @@
+import { Dispatch } from "redux";
 import { hotelsAPI, HotelType } from "../../../api/api";
-import { AppThunk } from "../../../app/store";
-
-
+import { errorMessage, setStatus } from "../../../app/app-reducer";
 
 let initialState = {
-    // hotels: [] as HotelType[]
-    hotels: [
-        { hotelId: 1, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 5, priceAvg: 180000 },
-        { hotelId: 2, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 3, priceAvg: 239578 },
-        { hotelId: 3, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 4, priceAvg: 89890 },
-        { hotelId: 4, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 3, priceAvg: 455788 },
-        { hotelId: 5, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 5, priceAvg: 180000 },
-        { hotelId: 6, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 5, priceAvg: 180000 },
-        { hotelId: 7, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 3, priceAvg: 180000 },
-        { hotelId: 8, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 2, priceAvg: 180000 },
-        { hotelId: 9, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 4, priceAvg: 180000 },
-    ] as HotelType[]
+    hotels: [] as HotelType[],
+    location: 'Moscow',
 }
 
 
-export const hotelsReducer = (state = initialState, action: FavoritesActionsType) => {
+export type HotelsReducerType = typeof initialState
+
+export const hotelsReducer = (state: HotelsReducerType = initialState, action: HotelsActionsType): HotelsReducerType => {
     switch (action.type) {
-        case 'HOTEL/ADD_HOTEL':
+        case 'HOTEL/SET_HOTEL':
             return { ...state, hotels: [...action.hotels] }
+        case 'HOTEL/SET_LOCATION':
+            return { ...state, location: action.location }
         default:
             return state;
     }
@@ -30,30 +23,37 @@ export const hotelsReducer = (state = initialState, action: FavoritesActionsType
 
 
 export const setHotels = (hotels: HotelType[]) =>
-    ({ type: 'HOTEL/ADD_HOTEL', hotels } as const)
+    ({ type: 'HOTEL/SET_HOTEL', hotels } as const)
 
-export const requestHotels = (location?: string, checkIn?: string, checkOut?: string,): AppThunk =>
-    async (dispatch) => {
+export const setLocation = (location: string) =>
+    ({ type: 'HOTEL/SET_LOCATION', location } as const)
 
+
+
+export const requestHotels = (location: string, checkIn: string, checkOut: string,) =>
+    async (dispatch: Dispatch) => {
+
+        dispatch(setStatus(true))
+        dispatch(setLocation(location))
         try {
             const res = await hotelsAPI.getHotels(location, checkIn, checkOut)
-            console.log('====================================');
             console.log(res.data);
-            console.log('====================================');
-            // dispatch(setHotels(res.data))
+            dispatch(setHotels(res.data))
         }
         catch (err: any) {
-
+            console.log(err.response.data.message)
+            dispatch(errorMessage(err.message))
         }
         finally {
-
+            dispatch(setStatus(false))
         }
     }
 
 
 type SetHotelsType = ReturnType<typeof setHotels>
+type SetLocationType = ReturnType<typeof setLocation>
 
-export type FavoritesActionsType = SetHotelsType
+export type HotelsActionsType = SetHotelsType | SetLocationType
 
 
 

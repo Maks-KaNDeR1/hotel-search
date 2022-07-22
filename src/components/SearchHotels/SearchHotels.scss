@@ -5,28 +5,16 @@
     width: 1440px;
     height: 1024px;
 
-
     .main-wrapper-content {
 
-        // margin: 0 auto;
-        display: grid;
-        // grid-template-columns: 2fr 1fr;
-        // grid-template-areas: "p m"  "p m";
-        
-        // width: 1048px;
         height: 906px;
         margin: 0px 184px 26px 208px;
+        // margin: 0 auto;
+        
+        display: grid;
         grid-template-areas:   "p m m"
         "f m m"
         "f m m";
-
-        // grid-template-areas: "p m m"
-        //     // "f m m"
-        //     "f m m";
-
-        // grid-template-columns: 360px 664px;
-        // grid-template-rows: auto;
-        // grid-template-areas: 'p m' 'f m';
     }
 
 }

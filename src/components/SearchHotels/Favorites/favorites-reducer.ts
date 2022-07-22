@@ -3,30 +3,61 @@ import { HotelType } from "../../../api/api";
 
 
 let initialState = [
-    { hotelId: 1, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow d Hotel', stars: 1, priceAvg: 180000 },
-    { hotelId: 2, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 3, priceAvg: 239578 },
-    { hotelId: 3, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Mosco Grand Hotel', stars: 4, priceAvg: 89890 },
-    { hotelId: 4, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marriott Grand Hotel', stars: 3, priceAvg: 455788 },
-    { hotelId: 5, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscot Grand Hotel', stars: 5, priceAvg: 180000 },
-    { hotelId: 6, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Moscow Marrnd Hotel', stars: 5, priceAvg: 180000 },
-    { hotelId: 7, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Mootel', stars: 3, priceAvg: 180000 },
-    { hotelId: 8, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Mo Grand Hotel', stars: 2, priceAvg: 180000 },
-    { hotelId: 9, location: { name: 'Moscow', country: 'Russia' }, hotelName: 'Mosel', stars: 4, priceAvg: 180000 },
+    {
+        hotelId: 333578,
+        hotelName: "Moscow Marriott Grand Hotel",
+        location: { name: 'Moscow', country: 'Russia' },
+        locationId: 12153,
+        priceAvg: 146704.81,
+        stars: 5
+    },
+    {
+        hotelId: 480240,
+        hotelName: "AZIMUT Hotel Smolenskaya Moscow",
+        location: { country: 'Russia', name: 'Moscow' },
+        locationId: 12153,
+        priceAvg: 189720.19,
+        stars: 4
+    },
+    {
+        hotelId: 1277700,
+        hotelName: "Smolenskaya Moscow",
+        location: { country: 'Russia', name: 'Moscow' },
+        locationId: 12153,
+        priceAvg: 77900,
+        stars: 3
+    },
+    {
+        hotelId: 45650,
+        hotelName: "Hotel Krasnodar",
+        location: { country: 'Russia', name: 'Krasnodar' },
+        locationId: 12153,
+        priceAvg: 45650,
+        stars: 2
+    },
+    {
+        hotelId: 156500,
+        hotelName: "Hotlenskaya Volgograd",
+        location: { country: 'Russia', name: 'Volgograd' },
+        locationId: 12153,
+        priceAvg: 180000,
+        stars: 4
+    },
 ] as HotelType[]
 
 
-export const favoritesReducer = (state = initialState, action: FavoritesActionsType) => {
+export type FavoritesReducerType = typeof initialState
+
+export const favoritesReducer = (state: FavoritesReducerType = initialState, action: FavoritesActionsType) => {
     switch (action.type) {
         case 'FV/ADDED_FAVORITES_HOTEL':
+            return {
+                ...state,
+                // hotels: [...state.favoriteHotels, action.hotel]
+                // state.push(action.hotel)
+                // ...action.hotel, ...state
 
-            // return [
-            //     ...state, {
-            //         id: +new Date(),
-            //         title: action.title,
-            //         isDone: false
-            //     }
-            // ]
-            return state
+            }
         case 'FV/REMOVE_HOTEL':
             return state.filter(f => f.hotelId !== action.id)
         default:
@@ -35,8 +66,8 @@ export const favoritesReducer = (state = initialState, action: FavoritesActionsT
 };
 
 
-export const addedFavoritesHotel = () =>
-    ({ type: 'FV/ADDED_FAVORITES_HOTEL' } as const)
+export const addedFavoritesHotel = (hotel: HotelType) =>
+    ({ type: 'FV/ADDED_FAVORITES_HOTEL', hotel } as const)
 
 
 export const removeHotel = (id: number) => ({ type: 'FV/REMOVE_HOTEL', id } as const)

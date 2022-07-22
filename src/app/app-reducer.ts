@@ -1,7 +1,6 @@
 
 
 let initialState = {
-    initialized: false,
     statusLoading: false,
     error: ''
 };
@@ -23,18 +22,14 @@ const appReducer = (state = initialState, action: AppActionsType): InitialStateT
 
 export const setStatus = (status: boolean) => ({ type: 'APP/SET-STATUS', status } as const)
 export const errorMessage = (error: string) => ({ type: 'APP/ERROR_MESSAGE', error } as const)
-export const errorCode = (code: number) => ({ type: 'APP/ERROR_CODE', code } as const)
 
 
 type SetStatusActionType = ReturnType<typeof setStatus>
-type ErrorCodeType = ReturnType<typeof errorCode>
 type ErrorMessageType = ReturnType<typeof errorMessage>
 
 
 export type AppActionsType =
     | SetStatusActionType
     | ErrorMessageType
-    | ErrorCodeType
-
 
 export default appReducer;
