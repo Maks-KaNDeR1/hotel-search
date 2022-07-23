@@ -1,7 +1,5 @@
 .favoritesBlock {
-
     grid-area: f;
-    // overflow: auto;
     height: 466px;
     width: 360px;
 
@@ -11,9 +9,11 @@
     border-radius: 16px;
 
     padding: 32px;
+
     h1 {
         // padding: -10px;
     }
+
     .sorting {
         padding: 6px 0 18px 0;
 
@@ -25,18 +25,22 @@
             // border: 1px solid #41522E;
             align-items: center;
             border-radius: 4px;
-            
+
             padding: 4px 18px 4px 8px;
             margin-right: 10px;
+
             .angle {
                 // display: inline-block;
                 position: absolute;
+
                 i {
                     position: absolute;
                     top: 1px;
                     left: 3px;
                     display: flex;
-                } :nth-child(2) {
+                }
+
+                :nth-child(2) {
                     position: absolute;
                     top: 9px;
 
@@ -48,6 +52,13 @@
     .hotelItem {
         overflow: auto;
         height: 300px;
+
+        h1 {
+            text-align: center;
+            // color: rgb(4 104 152);
+
+            color: linear-gradient(104.34deg, #41522E -15.34%, #BE8022 145.95%);
+        }
     }
 
     ::-webkit-scrollbar {
@@ -58,9 +69,14 @@
         position: relative;
         display: flex;
         justify-content: center;
+
         top: -70px;
         font-size: 50px;
         color: #d2b40ab4;
         opacity: 0.7;
+
+        i {
+            cursor: pointer;
+        }
     }
 }

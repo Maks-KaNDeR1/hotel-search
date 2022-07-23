@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 export const instance = axios.create({
     baseURL: 'http://engine.hotellook.com/api/v2/',
@@ -9,7 +9,7 @@ export const hotelsAPI = {
         location: string,
         checkIn: string,
         checkOut: string,
-    ) {
+    ): Promise<AxiosResponse<HotelType[]>> {
         return instance.get<HotelType[]>(
             'cache.json', {
             params: {

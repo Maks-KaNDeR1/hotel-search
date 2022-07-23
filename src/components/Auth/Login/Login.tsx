@@ -4,8 +4,8 @@ import * as yup from 'yup'
 import s from './Login.module.scss';
 import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../utils/hook';
-import { login } from '../auth-reducer';
 import MainButton from '../../../common/MainButton/MainButton';
+import { setAuthUserData } from '../auth-reducer';
 
 
 export const Login = () => {
@@ -34,7 +34,7 @@ export const Login = () => {
 
     const submitHandler = (values: SubmitHandlerType) => {
         const isAuth = true
-        dispatch(login(values.email, values.password, isAuth))
+        dispatch(setAuthUserData(values.email, values.password, isAuth))
         sessionStorage.setItem('auth', JSON.stringify({ isAuth: isAuth }))
     }
 

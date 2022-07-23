@@ -1,28 +1,25 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import s from './Main.module.scss'
 import { Hotel } from './Hotel/Hotel'
-import { useAppSelector, useIsInViewport } from '../../../utils/hook'
+import { useAppDispatch, useAppSelector } from '../../../utils/hook'
 import { requestHotels } from './hotels-reducer'
 import { addedFavoritesHotel, removeHotel } from '../Favorites/favorites-reducer'
-import { useDispatch } from 'react-redux'
 import { HotelType } from '../../../api/api'
 import { todaysLat } from '../RequestParameters/RequestParameters'
 
 
 export const Main = () => {
-    const ref1 = useRef(null)
-    // const isInViewport1 = useIsInViewport(ref1)
+
+    const scroll = useRef<any>(null)
 
     const favorites = useAppSelector(state => state.favoriteHotel.length)
-
     const hotelsReducer = useAppSelector(state => state.hotel)
     const { hotels, location } = hotelsReducer
-    // const dispatch = useAppDispatch()
-    const dispatch = useDispatch<any>()
 
+    const dispatch = useAppDispatch()
 
-    let checkIn = todaysLat
-    let checkOut = todaysLat
+    const checkIn = todaysLat
+    const checkOut = todaysLat
 
     useEffect(() => {
         dispatch(requestHotels(location, checkIn, checkOut))
@@ -30,7 +27,7 @@ export const Main = () => {
 
     console.log(hotels);
 
-    let addToFavoriteOnCLick = (hotel: HotelType) => {
+    const addToFavoriteOnCLick = (hotel: HotelType) => {
         dispatch(addedFavoritesHotel(hotel))
     }
 
@@ -38,6 +35,12 @@ export const Main = () => {
         dispatch(removeHotel(id))
     }, [dispatch])
 
+    const hotelElements = hotels.map(h =>
+        <Hotel key={h.hotelId} hotel={h} addToFavorite={addToFavoriteOnCLick} removeHotel={removeHotelOnClick}
+        />
+    )
+
+    const handleClick = () => scroll.current.scrollIntoView({ behavior: 'smooth' })
 
     return (
         <div className={s.mainBlock} >
@@ -59,20 +62,18 @@ export const Main = () => {
             </div>
             <div className={s.hotelItem}>
                 {
-                    hotels.length < 1 ? <h1>По данному запросу отелей не найдено!</h1>
-                        : hotels.map(h =>
-                            <Hotel key={h.hotelId}
-                                refValue={ref1}
-                                hotel={h}
-                                addToFavorite={addToFavoriteOnCLick}
-                                removeHotel={removeHotelOnClick}
-                            />
-                        )
+                    hotels.length > 0 ? hotelElements
+                        : <h1>По данному запросу отелей не найдено!</h1>
                 }
+                <div ref={scroll}></div>
             </div>
             <span className={s.arrow}>
                 {
-                    hotels.length > 7 ? <i className="fa fa-arrow-circle-down" aria-hidden="true"></i> : ''
+                    hotels.length > 7 && <i
+                        onClick={handleClick}
+                        className="fa fa-arrow-circle-down"
+                        aria-hidden="true">
+                    </i>
                 }
             </span>
         </div>

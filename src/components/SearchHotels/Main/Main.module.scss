@@ -1,5 +1,4 @@
 .mainBlock {
-
     grid-area: m;
     width: 664px;
     height: 902px;
@@ -25,9 +24,6 @@
             font-weight: 400;
             font-size: 24px;
             line-height: 28px;
-            // display: flex;
-            // align-items: center;
-            // text-align: right;
 
             color: #41522E;
         }
@@ -60,18 +56,24 @@
     .hotelItem {
         overflow: auto;
         height: 530px;
-        // width: 650px;
+
         h1 {
             color: rgb(4 104 152);
         }
     }
+
     .arrow {
         position: relative;
         display: flex;
         justify-content: center;
+
         top: -30px;
         font-size: 50px;
         color: #345d33b4;
         opacity: 0.4;
+
+        i {
+            cursor: pointer;
+        }
     }
 }

@@ -7,10 +7,9 @@ type PropsType = {
     hotel: HotelType
     removeHotel: (id: number) => void
     addToFavorite: (hotel: HotelType) => void
-    refValue?: any
 }
 
-export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel, refValue }) => {
+export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel }) => {
 
     const { hotelId, hotelName, priceAvg, stars } = hotel
     const [likeIt, setLikeIt] = useState(false)
@@ -27,7 +26,7 @@ export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel, 
 
 
     return (
-        <div className={s.itemBlock} ref={refValue}>
+        <div className={s.itemBlock}>
             <div className={s.iconHome}>
                 <i className="fa fa-home" aria-hidden="true"></i>
             </div>

@@ -4,21 +4,19 @@ import { hotelStars } from '../../../../common/HotelStars/HotelStars'
 import s from './FavoriteHotel.module.scss'
 
 type PropsType = {
-    hotels: HotelType
+    hotel: HotelType
     removeHotel: (id: number) => void
-    refValue?: any
 }
 
-const FavoriteHotel: React.FC<PropsType> = ({ hotels, removeHotel, refValue }) => {
-    const { hotelId, hotelName, priceAvg, stars } = hotels
-
+const FavoriteHotel: React.FC<PropsType> = ({ hotel, removeHotel }) => {
+    const { hotelId, hotelName, priceAvg, stars } = hotel
 
     const handleClick = () => {
         removeHotel(hotelId)
     }
 
     return (
-        <div className={s.item} ref={refValue}>
+        <div className={s.item}>
             <div>
                 <span className={s.title}> {hotelName} </span>
                 <button className={s.heart} onClick={handleClick}>
