@@ -46,7 +46,7 @@ export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel }
                 </div>
                 <span className={s.date}> {todaysDate}
                     <span> - </span>
-                    {amountOfDays} {amountOfDays > 1 ? "дней" : 'день'}
+                    {amountOfDays} {amountOfDays === 1 ? "день" : amountOfDays 4 ?  'дней' : дня}
                 </span>
                 <div className={s.stars}>
                     {hotelStars(stars)}

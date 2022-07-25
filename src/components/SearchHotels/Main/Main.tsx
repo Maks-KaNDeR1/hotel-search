@@ -13,17 +13,16 @@ export const Main: React.FC = () => {
 
     const favorites = useAppSelector(state => state.favoriteHotel.length)
     const hotelsReducer = useAppSelector(state => state.hotel)
-    const { hotels } = hotelsReducer
+    const { hotels, location } = hotelsReducer
 
     const loading = useAppSelector(state => state.app.statusLoading)
     const dispatch = useAppDispatch()
 
-    const location = 'Москва'
     const checkIn = todaysLat
     const amountOfDays = 1
 
     useEffect(() => {
-        dispatch(requestHotels(location, checkIn, amountOfDays))
+        dispatch(requestHotels('Москва', checkIn, amountOfDays))
     }, [])
 
     const addToFavoriteOnCLick = useCallback((hotel: HotelType) => {
