@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { HotelType } from '../../../../api/api'
+import { todaysDate } from '../../../../common/date/date'
 import { hotelStars } from '../../../../common/HotelStars/HotelStars'
 import s from './Hotel.module.scss'
 
@@ -7,11 +8,12 @@ type PropsType = {
     hotel: HotelType
     removeHotel: (id: number) => void
     addToFavorite: (hotel: HotelType) => void
+    amountOfDays: number
 }
 
-export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel }) => {
-
+export const Hotel: React.FC<PropsType> = React.memo(({ hotel, amountOfDays, addToFavorite, removeHotel }) => {
     const { hotelId, hotelName, priceAvg, stars } = hotel
+
     const [likeIt, setLikeIt] = useState(false)
 
     const handleClick = () => {
@@ -23,7 +25,6 @@ export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel }
             removeHotel(hotelId)
         }
     }
-
 
     return (
         <div className={s.itemBlock}>
@@ -41,15 +42,17 @@ export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel }
                         }
                     </button>
                 </div>
-                <span>28 June, 2022 - 1 day </span>
+                <span className={s.date}> {todaysDate}
+                    <span> - </span>
+                    {amountOfDays} {amountOfDays > 1 ? "дней" : 'день'}
+                </span>
                 <div className={s.stars}>
                     {hotelStars(stars)}
                 </div>
-                <div className={s.price}> <span>price</span>{priceAvg} P</div>
-                <div className={s.partition} ></div>
+                <div className={s.price}> <span>price</span>{priceAvg * amountOfDays} ₽</div>
             </div>
         </div>
     )
-}
+})
 
 

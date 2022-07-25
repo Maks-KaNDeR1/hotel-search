@@ -1,6 +1,6 @@
 {
-  "name": "search-for-hotels",
-  "homepage": "https://maks-kander1.github.io/search-for-hotels/",
+  "name": "hotel-search",
+  "homepage": "https://maks-kander1.github.io/hotel-search/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

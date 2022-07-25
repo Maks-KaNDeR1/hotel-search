@@ -29,17 +29,17 @@ export type HotelType = {
     hotelId: number
     hotelName: string
     location: {
-        country: "Russia"
+        country: string
         geo: {
-            lon: 37.617508
-            lat: 37.617508
+            lon: number
+            lat: number
         }
-        name: "Moscow"
+        name: string
         state: null
     }
-    locationId: 12153
-    priceAvg: 146704.81
-    priceFrom: 146704.81
+    locationId: number
+    priceAvg: number
+    priceFrom: number
     pricePercentile: {}
-    stars: 5
+    stars: number
 }

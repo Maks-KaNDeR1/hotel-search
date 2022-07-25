@@ -25,13 +25,11 @@ export type AppDispatch = typeof store.dispatch
 type AppRootActionsType = AppActionsType | AuthActionsType | HotelsActionsType | FavoritesActionsType
 
 
-// then run the saga
 sagaMiddleware.run(rootWacher)
 
 function* rootWacher() {
     yield takeEvery('HOTELS/REQUEST_HOTELS', requestHotelsWorkerSaga)
 }
-
 
 // @ts-ignore
 window.store = store

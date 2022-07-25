@@ -14,7 +14,6 @@
         /* identical to box height, or 129% */
 
         letter-spacing: -0.408px;
-
         color: #424242;
     }
 
@@ -29,10 +28,12 @@
         font-size: 19px;
 
         background-color: #fff;
-        // top: 5px;
-        // margin-left: 368px;
     }
-
+    .date {
+        span {
+         margin: 0 15px;
+        }
+     }
     .stars {
         font-size: 16px;
         position: absolute;
@@ -45,11 +46,14 @@
 
     .price {
         // position: absolute;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 170px;
+        width: 120px;
 
         font-weight: 400;
         font-size: 17px;
         line-height: 22px;
-        /* or 129% */
 
         text-align: right;
         letter-spacing: -0.408px;

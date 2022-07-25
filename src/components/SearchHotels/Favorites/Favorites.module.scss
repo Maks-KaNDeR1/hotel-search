@@ -20,18 +20,19 @@
         button {
             cursor: pointer;
             outline: none;
-            // pointer
-            border: none;
-            // border: 1px solid #41522E;
             align-items: center;
             border-radius: 4px;
 
             padding: 4px 18px 4px 8px;
             margin-right: 10px;
 
+            background-color: #fff;
+            border: 1px solid #41522E;
+            opacity: 0.4;
+
             .angle {
-                // display: inline-block;
                 position: absolute;
+                color: #E5E5E5;
 
                 i {
                     position: absolute;
@@ -45,6 +46,15 @@
                     top: 9px;
 
                 }
+            }
+        }
+
+        .active {
+            color: #41522E;
+            opacity: 1;
+
+            .angle {
+                color: #41522E;
             }
         }
     }
@@ -72,11 +82,11 @@
 
         top: -70px;
         font-size: 50px;
-        color: #d2b40ab4;
-        opacity: 0.7;
 
         i {
             cursor: pointer;
+            color: #d2b40ab4;
+            opacity: 0.3;
         }
     }
 }

@@ -3,6 +3,9 @@
     display: flex;
 
 
+    border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+    margin-top: 15px;
+    padding: 7px 0;
     .iconHome {
         margin-right: 20px;
         font-size: 35px;
@@ -18,6 +21,13 @@
             justify-content: center;
             align-items: center;
         }
+        // margin: 10px 0;
+        // width: 584px;
+        // height: 1px;
+
+        // background: rgba(135, 135, 135, 0.2);
+        // border-radius: 8px;
+        // transform: matrix(1, 0, 0, -1, 0, 0);
     }
 
     .item {
@@ -53,10 +63,15 @@
             // top: 5px;
             // margin-left: 368px;
         } 
-        // :hover {
-        //     background-color: #EBEBEB;
-        // }
+        :hover {
+            // background-color: #EBEBEB;
+        }
 
+        .date {
+           span {
+            margin: 0 15px;
+           }
+        }
         .stars {
             font-size: 16px;
             position: absolute;
@@ -69,33 +84,24 @@
 
         .price {
             // position: absolute;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 390px;
+            width: 130px;
 
             font-weight: 400;
             font-size: 17px;
             line-height: 22px;
-            /* or 129% */
 
             text-align: right;
             letter-spacing: -0.408px;
 
-            // top: 100px;
             span {
                 margin-right: 16px;
                 font-weight: 300;
                 font-size: 11px;
                 line-height: 22px;
-            }
-        }
-
-        .partition {
-            margin: 10px 0;
-            width: 584px;
-            height: 1px;
-
-            background: rgba(135, 135, 135, 0.2);
-            border-radius: 8px;
-            transform: matrix(1, 0, 0, -1, 0, 0);
+            } 
         }
     }   
-
 }

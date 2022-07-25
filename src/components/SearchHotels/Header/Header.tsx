@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '../../../utils/hook'
-import { setAuthUserData } from '../../Auth/auth-reducer'
+import { setIsInitialize } from '../../Auth/auth-reducer'
 import s from './Header.module.scss'
 
 
@@ -10,8 +10,8 @@ export const Header = () => {
 
     const handleClick = () => {
         sessionStorage.setItem('auth', JSON.stringify({ isAuth: false }))
-        let email = '', password = '', isAuth = false
-        dispatch(setAuthUserData(email, password, isAuth))
+        let isAuth = false
+        dispatch(setIsInitialize(isAuth))
     }
 
     return (

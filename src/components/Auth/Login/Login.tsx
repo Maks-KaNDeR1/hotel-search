@@ -44,6 +44,7 @@ export const Login = () => {
 
     return (
         <div className={s.loginBlock}>
+            <div className={s.background} ></div>
             <Formik
                 initialValues={{
                     email: '',
@@ -97,7 +98,6 @@ export const Login = () => {
                                 style={{ color: '#fff', fontSize: '18px' }}
                             />
                         </div>
-                        <div className={s.background} ></div>
                     </form>
                 )}
             </Formik>

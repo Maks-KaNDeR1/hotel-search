@@ -6,18 +6,6 @@ import MainButton from '../../../common/MainButton/MainButton'
 import { useAppDispatch } from '../../../utils/hook'
 import { requestHotels } from '../Main/hotels-reducer'
 
-
-let date = new Date()
-let y = date.getFullYear()
-let m = date.getMonth() + 1
-let d = date.getDate()
-
-let mon = m < 10 ? '0' + m : m
-let day = d < 10 ? '0' + d : d
-
-export let todaysLat = `${y}-${mon}-${day}`
-
-
 export const RequestParameters = () => {
 
     const dispatch = useAppDispatch()
@@ -31,14 +19,11 @@ export const RequestParameters = () => {
     type SubmitHandlerType = {
         local: string
         date: string
-        numberDays: string
+        numberDays: number
     }
 
     const submitHandler = (values: SubmitHandlerType) => {
-        console.log(values)
-        let nextDay = (+day + values.numberDays).toString()
-        let checkOut = `${y}-${mon}-${nextDay}`
-        dispatch(requestHotels(values.local, values.date, checkOut))
+        dispatch(requestHotels(values.local, values.date, values.numberDays))
     }
 
     return (
@@ -47,7 +32,7 @@ export const RequestParameters = () => {
                 initialValues={{
                     local: '',
                     date: '',
-                    numberDays: '',
+                    numberDays: 1,
                 }}
                 onSubmit={submitHandler}
                 validationSchema={validationsSchema}
@@ -94,6 +79,7 @@ export const RequestParameters = () => {
                         <div className={s.button}>
                             <MainButton
                                 title='Найти'
+                                type='submit'
                                 style={{ color: '#fff', fontSize: '18px', width: '296px' }}
                             />
                         </div>

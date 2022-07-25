@@ -14,6 +14,10 @@ export const authReducer = (state: InitialStateType = initialState, action: Auth
                 ...state,
                 ...action.payload
             }
+        case 'AUTH/SET_IS_INITIALIZE':
+            return {
+                ...state, isAuth: action.isAuth
+            }
         default:
             return state;
     }
@@ -23,6 +27,12 @@ export const authReducer = (state: InitialStateType = initialState, action: Auth
 export const setAuthUserData = (email: string, password: string, isAuth: boolean) =>
     ({ type: 'AUTH/SET_USER_DATA', payload: { email, password, isAuth } } as const)
 
-type SetAuthUserDataType = ReturnType<typeof setAuthUserData>
+export const setIsInitialize = (isAuth: boolean) =>
+    ({ type: 'AUTH/SET_IS_INITIALIZE', isAuth } as const)
 
-export type AuthActionsType = SetAuthUserDataType
+
+
+type SetAuthUserDataType = ReturnType<typeof setAuthUserData>
+type SetIsInitializeType = ReturnType<typeof setIsInitialize>
+
+export type AuthActionsType = SetAuthUserDataType | SetIsInitializeType
