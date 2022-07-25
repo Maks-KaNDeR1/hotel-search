@@ -5,6 +5,7 @@ import s from './RequestParameters.module.scss'
 import MainButton from '../../../common/MainButton/MainButton'
 import { useAppDispatch } from '../../../utils/hook'
 import { requestHotels } from '../Main/hotels-reducer'
+import { todaysLat } from '../../../common/date/date'
 
 export const RequestParameters = () => {
 
@@ -30,8 +31,8 @@ export const RequestParameters = () => {
         <div className={s.loginBlock}>
             <Formik
                 initialValues={{
-                    local: '',
-                    date: '',
+                    local: 'Москва',
+                    date: todaysLat,
                     numberDays: 1,
                 }}
                 onSubmit={submitHandler}

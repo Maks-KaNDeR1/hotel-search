@@ -9,7 +9,7 @@ import { Spin } from 'antd'
 import { todaysLat, todaysDate } from '../../../common/date/date'
 
 
-export const Main: React.FC = React.memo(() => {
+export const Main: React.FC = () => {
 
     const favorites = useAppSelector(state => state.favoriteHotel.length)
     const hotelsReducer = useAppSelector(state => state.hotel)
@@ -50,13 +50,12 @@ export const Main: React.FC = React.memo(() => {
         }
     }
 
-    const hotelElements = hotels.map(h =>
-        <Hotel key={h.hotelId}
-            hotel={h}
-            amountOfDays={amountOfDays}
-            addToFavorite={addToFavoriteOnCLick}
-            removeHotel={removeHotelOnClick}
-        />
+    const hotelElements = hotels.map(h => <Hotel
+        key={h.hotelId}
+        hotel={h}
+        addToFavorite={addToFavoriteOnCLick}
+        removeHotel={removeHotelOnClick}
+    />
     )
 
     return (
@@ -109,4 +108,4 @@ export const Main: React.FC = React.memo(() => {
             </span>
         </div>
     )
-})
+}

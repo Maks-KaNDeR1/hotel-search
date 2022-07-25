@@ -4,7 +4,7 @@ import { removeHotel, setSortHotels, setSortHotelsInReverse, setSortHotelsInReve
 import s from './Favorites.module.scss'
 import Hotel from './Hotel/FavoriteHotel'
 
-export const Favorites: React.FC = React.memo(() => {
+export const Favorites: React.FC = () => {
 
     const hotels = useAppSelector(state => state.favoriteHotel)
     const dispatch = useAppDispatch()
@@ -109,5 +109,5 @@ export const Favorites: React.FC = React.memo(() => {
             </span>
         </div>
     )
-})
+}
 

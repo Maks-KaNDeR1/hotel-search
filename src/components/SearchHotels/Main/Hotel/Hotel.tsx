@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import { HotelType } from '../../../../api/api'
 import { todaysDate } from '../../../../common/date/date'
 import { hotelStars } from '../../../../common/HotelStars/HotelStars'
+import { useAppSelector } from '../../../../utils/hook'
 import s from './Hotel.module.scss'
 
 type PropsType = {
     hotel: HotelType
     removeHotel: (id: number) => void
     addToFavorite: (hotel: HotelType) => void
-    amountOfDays: number
 }
 
-export const Hotel: React.FC<PropsType> = React.memo(({ hotel, amountOfDays, addToFavorite, removeHotel }) => {
+export const Hotel: React.FC<PropsType> = ({ hotel, addToFavorite, removeHotel }) => {
     const { hotelId, hotelName, priceAvg, stars } = hotel
+
+    const amountOfDays = useAppSelector(state => state.hotel.amountOfDays)
 
     const [likeIt, setLikeIt] = useState(false)
 
@@ -53,6 +55,6 @@ export const Hotel: React.FC<PropsType> = React.memo(({ hotel, amountOfDays, add
             </div>
         </div>
     )
-})
+}
 
 
