@@ -30,10 +30,11 @@ export const checkOut = (checkIn: string, chosenAmountOfDays: number) => {
     let mon = m < 10 ? '0' + m : m
     let day = d < 10 ? '0' + d : d
 
-    let amountOfDays = (+day + chosenAmountOfDays)
+    let ofDays = (+day + chosenAmountOfDays)
+    let amountOfDays = ofDays < 10 ? '0' + ofDays : ofDays
 
     if (amountOfDays > 31) {
-        let r = amountOfDays - 31
+        let r = +amountOfDays - 31
         let n = +mon + 1
 
         let residue = r < 10 ? '0' + r : r
