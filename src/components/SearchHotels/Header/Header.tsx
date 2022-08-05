@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '../../../utils/hook'
-import { setIsInitialize } from '../../Auth/auth-reducer'
+import { setIsInitialize } from '../../../store-reducers/auth-reducer'
 import s from './Header.module.scss'
 
 

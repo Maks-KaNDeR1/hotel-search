@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import s from './Main.module.scss'
 import { Hotel } from './Hotel/Hotel'
 import { useAppDispatch, useAppSelector } from '../../../utils/hook'
-import { requestHotels } from './hotels-reducer'
-import { addedFavoritesHotel, removeHotel } from '../Favorites/favorites-reducer'
+import { addedFavoritesHotel, removeHotel } from '../../../store-reducers/favorites-reducer'
 import { HotelType } from '../../../api/api'
 import { Spin } from 'antd'
 import { todaysLat, todaysDate } from '../../../common/date/date'
+import { requestHotels } from '../../../store-reducers/hotels-sagas'
 
 
 export const Main: React.FC = () => {

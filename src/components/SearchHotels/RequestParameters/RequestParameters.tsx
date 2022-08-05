@@ -4,8 +4,8 @@ import * as yup from 'yup'
 import s from './RequestParameters.module.scss'
 import MainButton from '../../../common/MainButton/MainButton'
 import { useAppDispatch } from '../../../utils/hook'
-import { requestHotels } from '../Main/hotels-reducer'
 import { todaysLat } from '../../../common/date/date'
+import { requestHotels } from '../../../store-reducers/hotels-sagas'
 
 export const RequestParameters = () => {
 

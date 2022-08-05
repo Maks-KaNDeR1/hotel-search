@@ -5,7 +5,7 @@ import s from './Login.module.scss';
 import { Navigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../utils/hook';
 import MainButton from '../../../common/MainButton/MainButton';
-import { setAuthUserData } from '../auth-reducer';
+import { setAuthUserData } from '../../../store-reducers/auth-reducer';
 
 
 export const Login = () => {

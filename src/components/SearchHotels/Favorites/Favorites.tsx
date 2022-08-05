@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../utils/hook'
-import { removeHotel, setSortHotels, setSortHotelsInReverse, setSortHotelsInReverseOnPrice, setSortHotelsOnPrice } from './favorites-reducer'
+import { removeHotel, setSortHotels, setSortHotelsInReverse, setSortHotelsInReverseOnPrice, setSortHotelsOnPrice } from '../../../store-reducers/favorites-reducer'
 import s from './Favorites.module.scss'
 import Hotel from './Hotel/FavoriteHotel'
 

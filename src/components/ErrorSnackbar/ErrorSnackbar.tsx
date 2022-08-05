@@ -2,8 +2,8 @@ import React, { SyntheticEvent } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppRootStateType } from '../../app/store';
-import { errorMessage } from '../../app/app-reducer';
+import { AppRootStateType } from '../../store-reducers/store';
+import { errorMessage } from '../../store-reducers/app-reducer';
 import { useAppSelector } from '../../utils/hook';
 
 

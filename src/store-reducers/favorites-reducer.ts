@@ -1,4 +1,4 @@
-import { HotelType } from "../../../api/api";
+import { HotelType } from "../api/api";
 
 
 
