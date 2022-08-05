@@ -3,9 +3,10 @@ import { applyMiddleware, combineReducers, legacy_createStore as createStore } f
 import thunk from 'redux-thunk';
 import appReducer from './app-reducer';
 import { favoritesReducer } from './favorites-reducer';
-import { hotelsReducer, requestHotelsWorkerSaga } from './hotels-reducer';
+import { hotelsReducer } from './hotels-reducer';
 import createSagaMiddleware from 'redux-saga'
 import { takeEvery } from 'redux-saga/effects'
+import { requestHotelsWorkerSaga } from './hotels-sagas';
 
 export const rootReducer = combineReducers({
     auth: authReducer,
