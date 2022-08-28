@@ -22,7 +22,7 @@ export const Main: React.FC = () => {
     const amountOfDays = 1
 
     useEffect(() => {
-        dispatch(requestHotels('Моdgdfgсква', checkIn, amountOfDays))
+        dispatch(requestHotels('Москва', checkIn, amountOfDays))
     }, [])
 
     const addToFavoriteOnCLick = useCallback((hotel: HotelType) => {
