@@ -69,6 +69,16 @@
         overflow: auto;
         height: 530px;
 
+        .prompt {
+            font-size: 10px;
+            color: rgb(1, 28, 119);
+            // background-color: darkblue;
+            .promptText {
+                cursor: pointer;
+                moz-user-select: none; -khtml-user-select: none; user-select: none
+            }
+        }
+
         h1 {
             color: rgb(4 104 152);
         }

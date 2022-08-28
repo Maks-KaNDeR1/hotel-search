@@ -22,7 +22,7 @@ export const Main: React.FC = () => {
     const amountOfDays = 1
 
     useEffect(() => {
-        dispatch(requestHotels('Москва', checkIn, amountOfDays))
+        dispatch(requestHotels('Моdgdfgсква', checkIn, amountOfDays))
     }, [])
 
     const addToFavoriteOnCLick = useCallback((hotel: HotelType) => {
@@ -39,6 +39,7 @@ export const Main: React.FC = () => {
     const handleClick = () => scroll.current?.scrollIntoView({ behavior: 'smooth' })
 
     const [isAutoScroll, setIsAutoScroll] = useState(true)
+    const [propmt, setPropmt] = useState(false)
 
     const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
         const element = e.currentTarget;
@@ -91,7 +92,23 @@ export const Main: React.FC = () => {
                     <div className={s.hotelItem} onScroll={scrollHandler}>
                         {
                             hotels.length > 0 ? hotelElements
-                                : <h1>По данному запросу отелей не найдено!</h1>
+                                : <div> <h1>По данному запросу отелей не найдено!</h1>
+                                    <span className={s.prompt} onDoubleClick={() => setPropmt(value => !value)} >
+                                        {
+                                            !propmt ? <b className={s.promptText}>Подсказка</b>
+                                                : <span>
+                                                    <b className={s.promptText}>Подсказка:</b>
+                                                    "для chrome" если вы только зашли и у вас не работает приложение, то
+                                                    <br />1. зайдите в настройки.
+                                                    <br />2. Выберите <b> Конфиденциальность и безопасность</b> {'>'} <b>Настройки сайтов.</b>
+                                                    <br />3. Нажмите <b>Дополнительные настройки контента</b> {'>'} <b>Небезопасный контент.</b>
+                                                    <br /> <b> Либо</b> вставьте эту ссылку <b>chrome://settings/content/insecureContent</b> в адресную стоку браузера
+                                                    <br />4. Рядом с надписью "Разрешить сайтам показывать небезопасный контент" нажмите кнопку <b>Добавить.</b>
+                                                    <br />5. введите адрес maks-kander1.github.io
+                                                </span>
+                                        }
+                                    </span>
+                                </div>
                         }
                         <div ref={scroll}></div>
                     </div>
@@ -105,6 +122,6 @@ export const Main: React.FC = () => {
                     </i>
                 }
             </span>
-        </div>
+        </div >
     )
 }
